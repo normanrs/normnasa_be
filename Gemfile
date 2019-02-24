@@ -11,6 +11,7 @@ gem 'puma', '~> 3.11'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'figaro'
+gem 'faraday'
 gem 'rack-cors'
 gem 'twitter'
 
@@ -18,6 +19,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara'
   gem 'factory_bot_rails'
+  gem 'faker'
   gem 'figaro'
   gem 'launchy'
   gem 'pry'

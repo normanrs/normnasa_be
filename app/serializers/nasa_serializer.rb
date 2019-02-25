@@ -1,4 +1,4 @@
 class NasaSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :text
+  attributes :text, :url
 end

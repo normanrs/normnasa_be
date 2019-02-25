@@ -1,10 +1,14 @@
 class Api::V1::NasaController < ApplicationController
   require 'twitter'
 
-
   def show
-    latest = client.user_timeline(8295072).take(1)[0]
-    render json: NasaSerializer.new(latest)
+    recent_five = client.user_timeline(8295072).take(5)
+    tweets = recent_five.map do |tweet|
+      text = tweet.text.split(':')[0]
+      url = URI::extract(tweet.text)[1]
+      Nasatweet.new(text, url)
+    end
+    render json: NasaSerializer.new(tweets)
   end
 
 

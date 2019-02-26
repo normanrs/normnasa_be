@@ -1,9 +1,11 @@
 class Api::V1::FavoritesController < ApplicationController
   def create
     begin
-      user = Favorite.create(params_in)
-      raise 'Bad data' unless user.save
-      render json: FavoriteSerializer.new(user), status: 201
+      user = User.find_by(api_key: params_in[:api_key])
+      data = {user_id: user.id, text: params_in[:text], url: params_in[:url]}
+      fav = Favorite.create(data)
+      raise 'Bad data' unless fav.save
+      render json: FavoriteSerializer.new(fav), status: 201
     rescue StandardError => err
       render json:{message: err}, status: 400
     end

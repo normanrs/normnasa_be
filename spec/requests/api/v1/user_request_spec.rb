@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'POST /users' do
+RSpec.describe 'the users endpoint' do
   it 'creates user and returns their api key' do
     data = { email: 'email@gmail.com', password: '12345' }
     post "/api/v1/users", params: data

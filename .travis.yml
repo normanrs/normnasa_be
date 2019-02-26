@@ -3,8 +3,8 @@ rvm:
 - 2.4.1
 services:
 - postgresql
-before_script:
-- bundle exec rake db:{drop,create,migrate}
+script:
+- bundle exec rake db:{create,migrate}
 env:
   matrix:
   - secure: oEAypc5VZMfz4fUSbA/L207oVW3QSa4jh9Gybhp4lo8g/11IxwApmuqkrWtOo5dcH4L0jolcAlSIFsvLNOQ1g1jyXVAISHGC4Hj9eeTULgPKQ7PWygWC40c9yOXbEzMtOOa64Tj56d62AhD6WLTPiT6qP5PK1y8kNkhOVpIvIbdLs8s10h9Nrak9b8SCBADVjAnNBpiVgY7t1wyXOBgYUDRAx6IOQiG6PGy1+y1fFLjef2e2gcgPCae/8nK35kE1E9U4zaFYIDJZwczLwIGeau0qto59eLlNKscvqLjikEIZdRj7jG1zgdyytn9ewUOBDR5gmbNviDuyaddUUM44jxCySC9z2pOBdLoN3N4R2gx4L5EPENC8pYsrV7iFWF8/bOhX3rILxt/RGfGpIIqorFQj6jIQb0TmdKWCtiIAPUNwL63PE2AuT9dhbq2+vtda61weKLzoen+SFaizoxhHXXVVVMPCY50+bDtw5fnH5NQDJpVj/fJdSgir8Mo+m/pTClpCsqZrexVD/++N29+r3eiwAYVvtWLzCEiAgHVYejzfhMQLC/Hs0nwXU66Ya44B/9SSy8BKgGhUT99574lRiCDnkbDJqwwOqJyvrUU3TPUkHdLjeLZ+TYreQkFax+AHsxJmyCGBAb/1m1zDSxmgXt+e6b2xtEjGhU74EK1413U=

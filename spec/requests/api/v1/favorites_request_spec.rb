@@ -16,12 +16,14 @@ RSpec.describe 'the favorites endpoint' do
     expect(data.first[:attributes].keys.include?(:url)).to be(true)
   end
 
-  xit 'doesnt return api key with wrong password' do
+  it 'doesnt return favorites when supplied a bad api key' do
     user = create(:user)
+    create(:favorite, user_id: user.id)
 
-    get "/api/v1/users?email=#{user.email}&password='hahahaha'"
+    get "/api/v1/favorites?api_key='hahahahah'"
     expect(response.status).to eq(404)
     actual = JSON.parse(response.body)
-    expect(actual["message"]).to_not be_empty
+    expect(actual["message"]).to eq("Bad api_key")
   end
+
 end

@@ -11,6 +11,15 @@ class Api::V1::NasaController < ApplicationController
     render json: NasaSerializer.new(tweets)
   end
 
+  def index
+    recent_five = client.search("apod #{params_in[:search]}").take(5)
+    tweets = recent_five.map do |tweet|
+      text = tweet.text.split(':')[0]
+      url = URI::extract(tweet.text)[1]
+      Nasatweet.new(text, url)
+    end
+    render json: NasaSerializer.new(tweets)
+  end
 
 private
 
@@ -22,5 +31,10 @@ private
       config.access_token_secret = ENV['tw_accsecret']
     end
   end
+
+  def params_in
+    params.permit(:search)
+  end
+
 
 end

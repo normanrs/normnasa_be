@@ -14,8 +14,8 @@ class Api::V1::NasaController < ApplicationController
   def index
     recent_five = client.search("apod #{params_in[:search]}").take(5)
     tweets = recent_five.map do |tweet|
-      text = tweet.text.split(':')[0]
-      url = URI::extract(tweet.text)[1]
+      text = tweet.text
+      url = tweet.uris.first.attrs[:expanded_url]
       Nasatweet.new(text, url)
     end
     render json: NasaSerializer.new(tweets)

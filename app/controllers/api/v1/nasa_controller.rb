@@ -18,7 +18,7 @@ class Api::V1::NasaController < ApplicationController
       if tweet.uris.any?
         url = tweet.uris.first.attrs[:expanded_url]
       else
-        url = 'https://history.nasa.gov/SP-350/ch-13-1.html'
+        url = 'https://apod.nasa.gov/apod/lib/about_apod.html'
       end
       Nasatweet.new(text, url)
     end

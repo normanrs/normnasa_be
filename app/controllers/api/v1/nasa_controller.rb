@@ -15,7 +15,11 @@ class Api::V1::NasaController < ApplicationController
     recent_five = client.search("apod #{params_in[:search]}").take(5)
     tweets = recent_five.map do |tweet|
       text = tweet.text
-      url = tweet.uris.first.attrs[:expanded_url]
+      if tweet.uris.any?
+        url = tweet.uris.first.attrs[:expanded_url]
+      else
+        url = 'https://history.nasa.gov/SP-350/ch-13-1.html'
+      end
       Nasatweet.new(text, url)
     end
     render json: NasaSerializer.new(tweets)

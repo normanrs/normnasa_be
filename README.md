@@ -1,5 +1,5 @@
-# 📱 Project/App Title
-> Subtitle here
+# 📱 Norm-Nasa API
+> Back end for the Norm Nasa app.
 
 Introdution/Description of what the program does.
 
@@ -14,49 +14,49 @@ rails s (to spin up the server)
 
 ## 🕹 How to Use
 
-Describe the app's features
+get "/api/v1/nasa"
+Returns the top 5 latest NASA pic of the day tweets with image URLs.
 
-FEATURE
-stuff it needs
-stuff it does
+post "/api/v1/nasa"
+params = { search: }
+Returns the top 5 NASA pic of the day tweets based on your search term.
 
-FEATURE
-stuff it needs
-stuff it does
+post "/api/v1/users"
+params = { email: password: }
+Creates a site user when given a unique email and a password. Returns the users API key.
 
-FEATURE
-stuff it needs
-stuff it does
+get "/api/v1/users"
+params = { email: password: }
+Returns the user's API key when given the correct email and a password.
+
+
+post "/api/v1/favorites"
+params = {api_key: text: url: }
+Saves the user's favorite.
+
+get "/api/v1/favorites"
+params = {api_key: }
+Returns the user's favorites.
 
 ## 🚧 Known Issues
 
 Describe the app's known limitations/problems
 
-FEATURE
-stuff it needs
-stuff it does
-
-FEATURE
-stuff it needs
-stuff it does
-
-FEATURE
-stuff it needs
-stuff it does
+Sometime NASA tweets don't include links so the Pic of the Day "About" page is returned instead.
 
 ## 📊 How to Run Tests
 
 OS X & Linux:
 
 ```sh
-rspec (to run tests)
+bundle exec rspec (to run tests)
 ```
 
 ## 🏗 Tech Stack List
 
 * Ruby v 2.5
-* JavaScript
-* HTML/CSS
+* Rails 5
+* RSPEC
 
 ## 📥 How To Contribute
 
